@@ -41,42 +41,69 @@
         <p>
           Create a pages account. If you have a facebook account, log into it for this process. Sign in with <a href="#" class="text-info">Facebook</a> or <a href="#" class="text-info">Google</a>
         </p>
-        <form id="form-register" class="p-t-15" role="form" action="index.html">
+            <form id="form-register" class="p-t-15" role="form"  method="POST" action="{{ route('register') }}">
+                @csrf
           <div class="row">
             <div class="col-md-6">
               <div class="form-group form-group-default">
                 <label>First Name</label>
-                <input type="text" name="fname" placeholder="John" class="form-control" required>
+                <input type="text" placeholder="John" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required >
               </div>
             </div>
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
               <div class="form-group form-group-default">
                 <label>Last Names</label>
                 <input type="text" name="lname" placeholder="Smith" class="form-control" required>
               </div>
             </div>
-          </div>
-          <div class="row">
+          </div> --}}
+          {{-- <div class="row">
             <div class="col-md-12">
               <div class="form-group form-group-default">
                 <label>Pages User name</label>
                 <input type="text" name="uname" placeholder="yourname.pages.com (this can be changed later)" class="form-control" required>
               </div>
             </div>
-          </div>
+          </div> --}}
+          @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
           <div class="row">
             <div class="col-md-12">
               <div class="form-group form-group-default">
                 <label>Password</label>
-                <input type="password" name="pass" placeholder="Minimum of 4 Charactors" class="form-control" required>
-              </div>
+                <input type="password" placeholder="Minimum of 4 Charactors" class="form-control @error('password') is-invalid @enderror" name="password" required>
+               @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                 @enderror
+            </div>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-group-default">
+                <label for="password-confirm">Password</label>
+                <input id="password-confirm" type="password" placeholder="Minimum of 4 Charactors" class="form-control"  name="password_confirmation" required autocomplete="new-password">
+            </div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-12">
               <div class="form-group form-group-default">
                 <label>Email</label>
-                <input type="email" name="email" placeholder="We will send loging details to you" class="form-control" required>
+                <input type="email" placeholder="We will send loging details to you" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
               </div>
             </div>
           </div>
