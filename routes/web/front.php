@@ -22,4 +22,3 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/panels','Panel\DashboardController@index');
