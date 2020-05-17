@@ -41,7 +41,7 @@
       <ul class="menu-items">
         <li class="m-t-30 ">
           <a href="index.html" class="detailed">
-            <span class="title">Dashboard</span>
+            <span class="title">داشبورد</span>
             <span class="details">12 New Updates</span>
           </a>
           <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
