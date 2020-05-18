@@ -54,4 +54,14 @@ class User extends Authenticatable
     public function isStaff(){
         return $this->is_staff ;
     }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions->contains('name',$permission->name) || $this->hasRole($permission->roles);
+    }
+
+    public function hasRole($roles)
+    {
+        return !! $roles->intersect($this->roles)->all();
+    }
 }
