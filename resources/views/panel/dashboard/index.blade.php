@@ -1,7 +1,7 @@
 @extends('panel.main')
 
 @section('content')
-<div class="content sm-gutter">
+  <div class="content sm-gutter">
     <!-- START CONTAINER FLUID -->
     <div class="container-fluid padding-25 sm-padding-10">
       <div class="row">
@@ -16,14 +16,14 @@
                       <div class="card-header  top-left top-right">
                         <div class="card-title text-black hint-text">
                           <span class="font-montserrat fs-11 all-caps">Weekly Sales <i
-                                  class="fa fa-chevron-right"></i>
+                                    class="fa fa-chevron-right"></i>
                                               </span>
                         </div>
                         <div class="card-controls">
                           <ul>
                             <li>
                               <a data-toggle="refresh" class="card-refresh text-black" href="#"><i
-                                      class="card-icon card-icon-refresh"></i></a>
+                                        class="card-icon card-icon-refresh"></i></a>
                             </li>
                           </ul>
                         </div>
@@ -62,13 +62,13 @@
                   <div class="card-header ">
                     <div class="card-title text-black">
                       <span class="font-montserrat fs-11 all-caps">Weekly Sales <i
-                  class="fa fa-chevron-right"></i>
+                                class="fa fa-chevron-right"></i>
                               </span>
                     </div>
                     <div class="card-controls">
                       <ul>
                         <li><a href="#" class="card-refresh text-black" data-toggle="refresh"><i
-                          class="card-icon card-icon-refresh"></i></a>
+                                    class="card-icon card-icon-refresh"></i></a>
                         </li>
                       </ul>
                     </div>
@@ -76,8 +76,8 @@
                   <div class="p-l-20">
                     <h3 class="no-margin p-b-5 text-white">$23,000</h3>
                     <a href="#" class="btn-circle-arrow text-white"><i
-                  class="pg-arrow_minimize"></i>
-          </a>
+                              class="pg-arrow_minimize"></i>
+                    </a>
                     <span class="small hint-text text-white">65% lower than last month</span>
                   </div>
                   <div class="mt-auto">
@@ -104,7 +104,7 @@
                   <div class="card-controls">
                     <ul>
                       <li><a data-toggle="refresh" class="card-refresh text-black" href="#"><i
-                      class="card-icon card-icon-refresh"></i></a>
+                                  class="card-icon card-icon-refresh"></i></a>
                       </li>
                     </ul>
                   </div>
@@ -130,7 +130,7 @@
                   </div>
                   <div class="p-t-10 full-width">
                     <a href="#" class="btn-circle-arrow b-grey"><i
-                  class="pg-arrow_minimize text-danger"></i></a>
+                              class="pg-arrow_minimize text-danger"></i></a>
                     <span class="hint-text small">Show more</span>
                   </div>
                 </div>
@@ -178,9 +178,9 @@
                       <div class="p-l-5">
                         <h2 class="pull-left m-t-5 m-b-5">Apple Inc.</h2>
                         <h2 class="pull-left m-l-50 m-t-5 m-b-5 text-danger">
-                      <span class="">448.97</span>
-                      <span class="text-danger fs-12">-318.24</span>
-                  </h2>
+                          <span class="">448.97</span>
+                          <span class="text-danger fs-12">-318.24</span>
+                        </h2>
                         <div class="clearfix"></div>
                         <div class="full-width">
                           <ul class="list-inline">
@@ -287,10 +287,10 @@
               <div class="card-controls">
                 <ul>
                   <li><a href="#" class="card-collapse" data-toggle="collapse"><i
-                      class="card-icon card-icon-collapse"></i></a>
+                              class="card-icon card-icon-collapse"></i></a>
                   </li>
                   <li><a href="#" class="card-refresh text-black" data-toggle="refresh"><i
-                      class="card-icon card-icon-refresh"></i></a>
+                              class="card-icon card-icon-refresh"></i></a>
                   </li>
                 </ul>
               </div>
@@ -299,22 +299,22 @@
               <ul class="nav nav-tabs nav-tabs-simple">
                 <li class="nav-item">
                   <a href="#" data-toggle="tab" class="p-t-5 active">
-                  APPL<br>
-                  22.23<br>
-                  <span class="text-success">+60.223%</span>
-              </a>
+                    APPL<br>
+                    22.23<br>
+                    <span class="text-success">+60.223%</span>
+                  </a>
                 </li>
                 <li class="nav-item"><a href="#" data-toggle="tab" class="p-t-5">
-              FB<br>
-              45.97<br>
-              <span class="text-danger">-06.56%</span>
-          </a>
+                    FB<br>
+                    45.97<br>
+                    <span class="text-danger">-06.56%</span>
+                  </a>
                 </li>
                 <li class="nav-item"><a href="#" data-toggle="tab" class="p-t-5">
-              GOOG<br>
-              22.23<br>
-              <span class="text-success">+60.223%</span>
-          </a>
+                    GOOG<br>
+                    22.23<br>
+                    <span class="text-success">+60.223%</span>
+                  </a>
                 </li>
               </ul>
               <div class="tab-content p-l-20 p-r-20">
@@ -374,18 +374,18 @@
                     <ul class="nav nav-pills m-t-5 m-b-15" role="tablist">
                       <li class="active">
                         <a href="#tab1" data-toggle="tab" role="tab" class="b-a b-grey text-master">
-                                      fb
-                                  </a>
+                          fb
+                        </a>
                       </li>
                       <li>
                         <a href="#tab2" data-toggle="tab" role="tab" class="b-a b-grey text-master">
-                                      js
-                                  </a>
+                          js
+                        </a>
                       </li>
                       <li>
                         <a href="#tab3" data-toggle="tab" role="tab" class="b-a b-grey text-master">
-                                      sa
-                                  </a>
+                          sa
+                        </a>
                       </li>
                     </ul>
                     <div class="tab-content">
@@ -452,7 +452,7 @@
                     <div class="card-controls">
                       <ul>
                         <li><a href="#" class="card-refresh text-black" data-toggle="refresh"><i
-                                  class="card-icon card-icon-refresh"></i></a>
+                                    class="card-icon card-icon-refresh"></i></a>
                         </li>
                       </ul>
                     </div>
@@ -503,7 +503,7 @@
               <div class="card-controls">
                 <ul>
                   <li><a href="#" class="card-refresh text-black" data-toggle="refresh"><i
-                      class="card-icon card-icon-refresh"></i></a>
+                              class="card-icon card-icon-refresh"></i></a>
                   </li>
                 </ul>
               </div>
@@ -511,22 +511,22 @@
             <ul class="nav nav-tabs nav-tabs-simple">
               <li>
                 <a href="#widget-15-2-tab-1" class="active">
-              APPL<br>
-              22.23<br>
-              <span class="text-success">+60.223%</span>
-          </a>
+                  APPL<br>
+                  22.23<br>
+                  <span class="text-success">+60.223%</span>
+                </a>
               </li>
               <li><a href="#widget-15-2-tab-2">
-          FB<br>
-          45.97<br>
-          <span class="text-danger">-06.56%</span>
-      </a>
+                  FB<br>
+                  45.97<br>
+                  <span class="text-danger">-06.56%</span>
+                </a>
               </li>
               <li><a href="#widget-15-2-tab-3">
-          GOOG<br>
-          22.23<br>
-          <span class="text-success">+60.223%</span>
-      </a>
+                  GOOG<br>
+                  22.23<br>
+                  <span class="text-success">+60.223%</span>
+                </a>
               </li>
             </ul>
             <div class="tab-content">
@@ -567,7 +567,7 @@
               <div class="card-controls">
                 <ul>
                   <li><a href="#" class="card-refresh text-black" data-toggle="refresh"><i
-                      class="card-icon card-icon-refresh"></i></a>
+                              class="card-icon card-icon-refresh"></i></a>
                   </li>
                 </ul>
               </div>
@@ -652,11 +652,11 @@
                   <ul class="buttons pull-top top-right list-inline p-r-10 p-t-10">
                     <li>
                       <a class="text-white" href="#"><i class="fa fa-expand"></i>
-              </a>
+                      </a>
                     </li>
                     <li>
                       <a class="text-white" href="#"><i class="fa fa-heart-o"></i>
-              </a>
+                      </a>
                     </li>
                   </ul>
                   <div class="widget-19-post no-overflow">
@@ -724,8 +724,8 @@
                         <div class="pull-left">
                           <p class="small hint-text no-margin">Currently</p>
                           <h4 class="text-danger bold no-margin">32°
-                <span class="small">/ 30C</span>
-              </h4>
+                            <span class="small">/ 30C</span>
+                          </h4>
                         </div>
                         <div class="pull-right">
                           <canvas height="64" width="64" class="clear-day"></canvas>
@@ -733,8 +733,8 @@
                       </div>
                     </div>
                     <h5>Feels like
-          <span class="semi-bold">rainy</span>
-        </h5>
+                      <span class="semi-bold">rainy</span>
+                    </h5>
                     <p>Weather information</p>
                     <div class="widget-17-weather">
                       <div class="row">
@@ -886,7 +886,24 @@
       </div>
     </div>
     <!-- END CONTAINER FLUID -->
-</div>
+  </div>
 
 
-  @endsection
+@endsection
+@section('extra-footer')
+  <script src="{{asset('panel')}}/plugins/nvd3/lib/d3.v3.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/nvd3/nv.d3.min.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/nvd3/src/utils.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/nvd3/src/tooltip.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/nvd3/src/interactiveLayer.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/nvd3/src/models/axis.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/nvd3/src/models/line.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/nvd3/src/models/lineWithFocusChart.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/mapplic/js/hammer.js"></script>
+  <script src="{{asset('panel')}}/plugins/mapplic/js/jquery.mousewheel.js"></script>
+  <script src="{{asset('panel')}}/plugins/mapplic/js/mapplic.js"></script>
+  <script src="{{asset('panel')}}/plugins/rickshaw/rickshaw.min.js"></script>
+  <script src="{{asset('panel')}}/plugins/jquery-sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/plugins/skycons/skycons.js" type="text/javascript"></script>
+  <script src="{{asset('panel')}}/js/dashboard.js" type="text/javascript"></script>
+@endsection

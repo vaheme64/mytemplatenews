@@ -13,6 +13,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta content="" name="description" />
     <meta content="" name="author" />
+    <link href='https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css' rel='stylesheet' type='text/css'>
     <link href="{{asset('panel')}}/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('panel')}}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('panel')}}/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
@@ -24,3 +25,4 @@
     <link href="{{asset('panel')}}/plugins/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('panel')}}/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="{{asset('panel')}}/pages/css/themes/corporate.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('css/app.css')}}" >

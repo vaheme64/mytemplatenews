@@ -15,7 +15,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view('panel.permissions.show');
+        $permissions=Permission::all();
+        return view('panel.permissions.show',compact('permissions'));
     }
 
     /**
@@ -36,7 +37,15 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->ajax()) {
+            $data = $request->validate([
+                'name' => ['required', 'string', 'max:255', 'unique:permissions'],
+                'description' => ['required', 'string', 'max:255']
+            ]);
+            Permission::create($data);
+        }
+
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -81,6 +90,7 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        return back();
     }
 }

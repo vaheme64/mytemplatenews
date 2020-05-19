@@ -11,7 +11,7 @@
     <!-- END SIDEBAR -->
     <!-- END SIDEBPANEL-->
     <!-- START PAGE-CONTAINER -->
-    <div class="page-container ">
+    <div class="page-container text-right">
         <!-- START HEADER -->
         @include('panel.layout_panel.topmenu')
         <!-- END HEADER -->
@@ -36,7 +36,7 @@
       @include('panel.layout_panel.searchbar')
       <!-- END OVERLAY -->
       @include('panel.layout_panel.footer')
-      @yield('extra-footer')
+
     </body>
   </html>
 
