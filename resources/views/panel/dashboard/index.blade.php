@@ -886,7 +886,7 @@
       </div>
     </div>
     <!-- END CONTAINER FLUID -->
-  </div>
+</div>
 
 
   @endsection

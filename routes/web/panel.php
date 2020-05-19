@@ -6,3 +6,4 @@
  * Time: 10:31 PM
  */
 Route::get('/','Panel\DashboardController@index');
+Route::resource('/permissions','Panel\PermissionController');

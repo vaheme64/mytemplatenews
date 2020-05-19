@@ -63,7 +63,7 @@
           <span class="icon-thumbnail"><i class="pg-calender"></i></span>
           <ul class="sub-menu">
             <li class="">
-              <a href="calendar.html">دسترسی ها</a>
+            <a href="{{asset('admin/permissions')}}">دسترسی ها</a>
               <span class="icon-thumbnail">c</span>
             </li>
             <li class="">
