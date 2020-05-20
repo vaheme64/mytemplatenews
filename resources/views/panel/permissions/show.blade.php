@@ -61,7 +61,7 @@
                     </div>
                     <div class="modal-body">
                         <p class="small-text">برای ویرایش دسترسی فرم زیر را پر کنید</p>
-                        <form role="form" method="post" id="form2" >
+                        <form role="form" method="post" id="form2" action="">
                             @csrf
                             @method('PATCH')
                             <div class="row">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-cons" data-dismiss="modal">بستن</button>
-                        <button id="add-app"  type="submit"  class="btn btn-primary  btn-cons">اضافه کردن</button>
+                        <button id="update-app"  type="submit"  class="btn btn-primary  btn-cons">اضافه کردن</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -189,7 +189,7 @@
                                 {{--<p>Public</p>--}}
                             {{--</td>--}}
                             <td class="v-align-middle">
-                                <a href="{{route('permissions.edit',$permission->id)}}" class="btn btn-primary">ویرایش</a>
+                                <a href="{{route('permissions.edit',$permission->id)}}"  data-toggle="modal" data-target="#editNewAppModal" class="btn btn-primary edit-permission">ویرایش</a>
                                 <form method="post" style="display: inline-block;" action="{{route('permissions.destroy',$permission->id)}}">
                                     @csrf
                                     @method('DELETE')
@@ -238,6 +238,50 @@
                     }
                 })
             });
+
+            $(document).on('click','.edit-permission',function(e){
+                // e.preventDefault();
+                $.ajax({
+                    type: 'GET',
+                    url: $(this).attr('href'),
+                    success:function(result){
+                        // console.log(result);
+                        $("#form2").attr('action','/admin/permissions/'+result.id)
+                        $("#form2 input[name='name']").val(result.name);
+                        $("#form2 input[name='description']").val(result.description);
+
+                    }
+                });
+            });
+            $('#update-app').on('click',function (e) {
+                $.ajax({
+                    type: "PATCH",
+                    url: $('#form2').attr('action'),
+                    data: $('#form2').serialize(),
+                    // data:{_token:'{{ csrf_token() }}', data: $('#form2').serialize()},
+                    success: function (data) {
+                        location.reload();
+    //                     var table = $('#tableWithSearch').DataTable( {
+    //                         ajax: data
+    //                     } );
+    //                     setInterval( function () {
+    //                         table.ajax.reload();
+    //                     }, 1000 );
+
+    //                     $('#tableWithSearch').DataTable({
+    // ajax:  {
+    //     url: {{url('permission.')}},
+    //     data: function(d){
+    //         d.param1 = "value1";
+    //         d.param2 = "value2";
+    //     }
+    // }
+// });
+                    }
+                })
+            });
+            
+
         });
     </script>
 @endsection

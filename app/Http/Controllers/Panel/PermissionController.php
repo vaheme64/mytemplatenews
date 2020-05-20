@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Permission;
+
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PermissionController extends Controller
 {
@@ -65,9 +67,12 @@ class PermissionController extends Controller
      * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permission $permission)
+    public function edit(Request $request,Permission $permission)
     {
-        //
+        if($request->ajax()){
+
+            return response()->json($permission);
+        }
     }
 
     /**
@@ -79,7 +84,17 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        //
+        if($request->ajax()){
+            $data=$request->validate([
+                'name' => ['required', 'string', 'max:255', Rule::unique('permissions')->ignore($permission->id)],
+                'description' => ['required', 'string', 'max:255']
+                ]);
+                $permission->update($data);
+                // return json_encode(array('statusCode'=>200));
+                return response()->json(Permission::all());
+
+
+        }
     }
 
     /**
