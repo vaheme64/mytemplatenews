@@ -11,14 +11,14 @@
     <link class="main-stylesheet" href="{{asset('panel')}}/pages/css/themes/corporate.css" rel="stylesheet" type="text/css" />
 
 
-<style>
-    #tableWithSearch{
-        direction: rtl;
-    }
-    .select2-container--open .select2-dropdown--below{
-        z-index:9999;
-    }
-</style>
+    <style>
+        #tableWithSearch{
+            direction: rtl;
+        }
+        .select2-container--open .select2-dropdown--below{
+            z-index:9999;
+        }
+    </style>
 @endsection
 @section('content')
 
@@ -64,16 +64,16 @@
                                     <option value="John">John</option>
                                     <option value="Lucy">Lucy</option>
                                 </select> -->
-                              
-                                    <div class="form-group form-group-default form-group-default-select2">
-                                        <label>Project</label>
-                                        <select class=" full-width" name='permissions[]' id='multi' data-init-plugin="select2" multiple>
-                                            @foreach($permissions as $permission)
+
+                                <div class="form-group form-group-default form-group-default-select2">
+                                    <label>Project</label>
+                                    <select class=" full-width" name='permissions[]' id='multi' data-init-plugin="select2" multiple>
+                                        @foreach($permissions as $permission)
                                             <option value="{{$permission->id}}">{{$permission->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                            
+                                        @endforeach
+                                    </select>
+                                </div>
+
                             </div>
                         </form>
                     </div>
@@ -115,12 +115,12 @@
                                     </div>
                                 </div>
                             </div>
-                                    <div class="form-group form-group-default form-group-default-select2">
-                                        <label>Project</label>
-                                        <select class=" full-width" name='permissions[]' id='multi' data-init-plugin="select2" multiple>
-                                           
-                                        </select>
-                                    </div>
+                            <div class="form-group">
+                                <label>Project</label>
+                                <select class="full-width" name='permissions[]' multiple>
+
+                                </select>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -163,7 +163,7 @@
                                     <h3>درست کردن سطح دسترسی</h3>
                                     <p>با تعریف سطح دسترسی در این صفحه به مدیریت اجازه دسترسی صفحات خود بپردازید. </p>
                                     {{--<p class="small hint-text m-t-5">VIA senior product manage--}}
-                                        {{--<br> for UI/UX at REVOX</p>--}}
+                                    {{--<br> for UI/UX at REVOX</p>--}}
                                     {{--<br>--}}
                                     <button class="btn btn-primary btn-cons">More</button>
                                 </div>
@@ -195,10 +195,10 @@
                         </div>
                     </div>
                     {{--<div class="pull-right">--}}
-                        {{--<div class="col-xs-12">--}}
-                            {{--<button id="show-modal-roles" class="btn btn-primary btn-cons"> اضافه کردن نقش<i class="fa fa-plus"></i>--}}
-                            {{--</button>--}}
-                        {{--</div>--}}
+                    {{--<div class="col-xs-12">--}}
+                    {{--<button id="show-modal-roles" class="btn btn-primary btn-cons"> اضافه کردن نقش<i class="fa fa-plus"></i>--}}
+                    {{--</button>--}}
+                    {{--</div>--}}
                     {{--</div>--}}
                     <div class="clearfix"></div>
                 </div>
@@ -215,31 +215,31 @@
                         </thead>
                         <tbody>
                         @foreach($roles as $role)
-                        <tr>
+                            <tr>
 
-                            <td class="v-align-middle semi-bold">
-                                <p>{{$role->name}}</p>
-                            </td>
-                            {{--<td class="v-align-middle"><a href="#" class="btn btn-tag">United States</a><a href="#" class="btn btn-tag">India</a>--}}
+                                <td class="v-align-middle semi-bold">
+                                    <p>{{$role->name}}</p>
+                                </td>
+                                {{--<td class="v-align-middle"><a href="#" class="btn btn-tag">United States</a><a href="#" class="btn btn-tag">India</a>--}}
                                 {{--<a href="#" class="btn btn-tag">China</a><a href="#" class="btn btn-tag">Africa</a>--}}
-                            {{--</td>--}}
-                            <td class="v-align-middle">
-                                <p>{{$role->description}}</p>
-                            </td>
-                            <td class="v-align-middle">@foreach($role->permissions()->get() as $name)
-                                    <a href="#" class="btn btn-tag">{{$name->name}}</a>
-                                @endforeach
-                            {{--<a href="#" class="btn btn-tag">China</a><a href="#" class="btn btn-tag">Africa</a>--}}
-                            </td>
-                            <td class="v-align-middle">
-                                <a href="{{route('roles.edit',$role->id)}}"  data-toggle="modal" data-target="#editNewAppModal" class="btn btn-primary edit-role">ویرایش</a>
-                                <form method="post" style="display: inline-block;" action="{{route('roles.destroy',$role->id)}}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger ">حذف</button>
-                                </form>
-                            </td>
-                        </tr>
+                                {{--</td>--}}
+                                <td class="v-align-middle">
+                                    <p>{{$role->description}}</p>
+                                </td>
+                                <td class="v-align-middle">@foreach($role->permissions()->get() as $name)
+                                        <a href="#" class="btn btn-tag">{{$name->name}}</a>
+                                    @endforeach
+                                    {{--<a href="#" class="btn btn-tag">China</a><a href="#" class="btn btn-tag">Africa</a>--}}
+                                </td>
+                                <td class="v-align-middle">
+                                    <a href="{{route('roles.edit',$role->id)}}"  data-toggle="modal" data-target="#editNewAppModal" class="btn btn-primary edit-role">ویرایش</a>
+                                    <form method="post" style="display: inline-block;" action="{{route('roles.destroy',$role->id)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger ">حذف</button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>
@@ -288,7 +288,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        
+
 
             $('#add-app').on('click',function (e) {
                 $.ajax({
@@ -300,9 +300,10 @@
                     }
                 })
             });
-
+            allPermission={!! json_encode($roles) !!};
             $(document).on('click','.edit-role',function(e){
                 // e.preventDefault();
+                let stringOptions="";
                 $.ajax({
                     type: 'GET',
                     url: $(this).attr('href'),
@@ -311,23 +312,28 @@
                         $("#form2").attr('action','/admin/roles/'+result[0].id)
                         $("#form2 input[name='name']").val(result[0].name);
                         $("#form2 input[name='description']").val(result[0].description);
-                       
-                       const role=result[1];
-                       let options=[];
-                        
+
+                        const role=result[1];
+                        let options=[];
+                        let selectedVar=false;
                         for( res in role){
                             // console.log(role[res]);
                             // console.log(res)
-                            // options +="<option value='"+role[res]+"'>"+res+"</option>";
-                            let ds=role[res];
-                            let b={ds:res};
+                            let id=role[res];
+                            // if(res===allPermission[id]){
+                            //
+                            // }
+                            stringOptions +="<option value='"+role[res]+"'>"+res+"</option>";
+
+
+                            let text=res;
+                            let b={id,text};
+                            // let b={ds};
                             options.push(b)
                         }
                         console.log(options);
-                        // $("#form2 input[name='permissions[]']").append(options);
-                        $('#multi').select2({
-                            data: options
-                        });
+                        $("#form2 select[name='permissions[]']").empty().append(stringOptions);
+                        // $(".dropdown-wrapper").append(stringOptions);
                     }
                 });
             });
@@ -339,26 +345,26 @@
                     // data:{_token:'{{ csrf_token() }}', data: $('#form2').serialize()},
                     success: function (data) {
                         location.reload();
-    //                     var table = $('#tableWithSearch').DataTable( {
-    //                         ajax: data
-    //                     } );
-    //                     setInterval( function () {
-    //                         table.ajax.reload();
-    //                     }, 1000 );
+                        //                     var table = $('#tableWithSearch').DataTable( {
+                        //                         ajax: data
+                        //                     } );
+                        //                     setInterval( function () {
+                        //                         table.ajax.reload();
+                        //                     }, 1000 );
 
-    //                     $('#tableWithSearch').DataTable({
-    // ajax:  {
-    //     url: {{url('permission.')}},
-    //     data: function(d){
-    //         d.param1 = "value1";
-    //         d.param2 = "value2";
-    //     }
-    // }
+                        //                     $('#tableWithSearch').DataTable({
+                        // ajax:  {
+                        //     url: {{url('permission.')}},
+                        //     data: function(d){
+                        //         d.param1 = "value1";
+                        //         d.param2 = "value2";
+                        //     }
+                        // }
 // });
                     }
                 })
             });
-            
+
 
         });
     </script>
