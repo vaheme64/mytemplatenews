@@ -31,16 +31,16 @@
                     <div class="modal-header clearfix ">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
                         </button>
-                        <h4 class="p-b-5">دسترسی <span class="semi-bold">جدید</span></h4>
+                        <h4 class="p-b-5">نقش <span class="semi-bold">جدید</span></h4>
                     </div>
                     <div class="modal-body">
-                        <p class="small-text">برای دسترسی جدید فرم زیر را پر کنید</p>
+                        <p class="small-text">برای نقش جدید فرم زیر را پر کنید</p>
                         <form role="form" method="post" id="form1" action="{{route('roles.store')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
-                                        <label>نام دسترسی</label>
+                                        <label>نام نقش</label>
                                         <input id="appName" type="text" name="name" class="form-control" placeholder="نام دسترسی ...">
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="row">
                                 <h5>
-                                    Multi select
+                                    دسترسی ها
                                 </h5>
                                 <!-- <p>Fancy multiselect option box. Customized for the anypreference</p>
                                 <br>
@@ -92,17 +92,17 @@
                     <div class="modal-header clearfix ">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
                         </button>
-                        <h4 class="p-b-5">ویرایش <span class="semi-bold">دسترسی</span></h4>
+                        <h4 class="p-b-5">ویرایش <span class="semi-bold">نقش</span></h4>
                     </div>
                     <div class="modal-body">
-                        <p class="small-text">برای ویرایش دسترسی فرم زیر را پر کنید</p>
+                        <p class="small-text">برای ویرایش نقش فرم زیر را پر کنید</p>
                         <form role="form" method="post" id="form2" action="">
                             @csrf
                             @method('PATCH')
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
-                                        <label>نام دسترسی</label>
+                                        <label>نام نقش</label>
                                         <input id="appName" type="text" name="name" class="form-control" placeholder="نام دسترسی ...">
                                     </div>
                                 </div>
@@ -116,16 +116,18 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Project</label>
+                                <label>دسترسی ها</label>
                                 <select class="full-width" name='permissions[]' multiple>
-
+                                    @foreach($permissions as $permission)
+                                    <option value="{{$permission->id}}">{{$permission->name}}</option>
+                                @endforeach
                                 </select>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-cons" data-dismiss="modal">بستن</button>
-                        <button id="update-app"  type="submit"  class="btn btn-primary  btn-cons">اضافه کردن</button>
+                        <button id="update-app"  type="submit"  class="btn btn-primary  btn-cons">ویرایش کردن</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -161,7 +163,7 @@
                                 </div>
                                 <div class="card-block">
                                     <h3>درست کردن سطح دسترسی</h3>
-                                    <p>با تعریف سطح دسترسی در این صفحه به مدیریت اجازه دسترسی صفحات خود بپردازید. </p>
+                                    <p>با تعریف نقش ها در این صفحه به هر فرد متناسب بانقشی که برای آن تعریف می کنید اجازه دسترسی بدهید. </p>
                                     {{--<p class="small hint-text m-t-5">VIA senior product manage--}}
                                     {{--<br> for UI/UX at REVOX</p>--}}
                                     {{--<br>--}}
@@ -181,7 +183,7 @@
 
             <div class="card card-transparent text-left">
                 <div class="card-header ">
-                    <div class="card-title"><h4 class="bold">لیست دسترسی ها</h4>
+                    <div class="card-title"><h4 class="bold">لیست نقش ها</h4>
                     </div>
                     <div class="pull-right">
                         <div class="col-xs-12">
@@ -190,7 +192,7 @@
                     </div>
                     <div class="pull-right">
                         <div class="col-xs-12">
-                            <button id="show-modal" class="btn btn-primary btn-cons"> اضافه کردن دسترسی<i class="fa fa-plus"></i>
+                            <button id="show-modal" class="btn btn-primary btn-cons"> اضافه کردن نقش<i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -300,7 +302,8 @@
                     }
                 })
             });
-            allPermission={!! json_encode($roles) !!};
+            // allPermission={!! json_encode($roles) !!};
+
             $(document).on('click','.edit-role',function(e){
                 // e.preventDefault();
                 let stringOptions="";
@@ -313,27 +316,44 @@
                         $("#form2 input[name='name']").val(result[0].name);
                         $("#form2 input[name='description']").val(result[0].description);
 
+                        allPermission=$("#form2 select[name='permissions[]']").children();
                         const role=result[1];
                         let options=[];
                         let selectedVar=false;
-                        for( res in role){
+                        // for( res in role){
                             // console.log(role[res]);
                             // console.log(res)
-                            let id=role[res];
+                            // let id=role[res];
                             // if(res===allPermission[id]){
                             //
                             // }
-                            stringOptions +="<option value='"+role[res]+"'>"+res+"</option>";
+                            // stringOptions +="<option value='"+role[res]+"'>"+res+"</option>";
 
 
-                            let text=res;
-                            let b={id,text};
-                            // let b={ds};
-                            options.push(b)
-                        }
-                        console.log(options);
-                        $("#form2 select[name='permissions[]']").empty().append(stringOptions);
+
+                        //     let text=res;
+                        //     let b={id,text};
+                        //     // let b={ds};
+                        //     options.push(b)
+                        // }
+                        // console.log(options);
+                        // $("#form2 select[name='permissions[]']").empty().append(stringOptions);
                         // $(".dropdown-wrapper").append(stringOptions);
+
+                        allPermission.each(function(index,value){
+                            // console.log(index+"++++"+value.value);
+                            for( res in role){
+                                let id=role[res];
+                                let currentOption=value;
+                                console.log(value.value);
+                                if(value.value==id){
+                                    $(currentOption).attr('selected','selected');
+                                    console.log($(currentOption))
+                                }
+                            stringOptions +=currentOption;
+                            }
+                            })
+                            // console.log(stringOptions);
                     }
                 });
             });

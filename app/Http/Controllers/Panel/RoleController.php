@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RoleController extends Controller
 {
@@ -47,7 +48,7 @@ class RoleController extends Controller
             ]);
             $role=Role::create($data);
             $role->permissions()->sync($data['permissions']);
-            
+
         }
 
         return redirect()->route('roles.index');
@@ -90,9 +91,11 @@ class RoleController extends Controller
         if($request->ajax()){
             $data=$request->validate([
                 'name' => ['required', 'string', 'max:255', Rule::unique('roles')->ignore($role->id)],
-                'description' => ['required', 'string', 'max:255']
+                'description' => ['required', 'string', 'max:255'],
+                'permissions'=>['required','array']
             ]);
             $role->update($data);
+            $role->permissions()->sync($data['permissions']);
             // return json_encode(array('statusCode'=>200));
             return response()->json(Role::all());
 
