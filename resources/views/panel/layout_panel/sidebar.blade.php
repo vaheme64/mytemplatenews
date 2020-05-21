@@ -63,11 +63,11 @@
           <span class="icon-thumbnail"><i class="pg-calender"></i></span>
           <ul class="sub-menu">
             <li class="">
-            <a href="{{asset('admin/permissions')}}">دسترسی ها</a>
+            <a href="{{route('permissions.index')}}">دسترسی ها</a>
               <span class="icon-thumbnail">c</span>
             </li>
             <li class="">
-              <a href="calendar_lang.html">نقش ها</a>
+              <a href="{{route('roles.index')}}">نقش ها</a>
               <span class="icon-thumbnail">L</span>
             </li>
           </ul>

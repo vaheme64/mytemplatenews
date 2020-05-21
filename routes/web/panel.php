@@ -7,3 +7,4 @@
  */
 Route::get('/','Panel\DashboardController@index');
 Route::resource('/permissions','Panel\PermissionController');
+Route::resource('/roles','Panel\RoleController');

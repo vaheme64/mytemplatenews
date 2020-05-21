@@ -1,6 +1,14 @@
 @extends('panel.main')
 @section('extra-header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{asset('panel')}}/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('panel')}}/plugins/bootstrap-tag/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('panel')}}/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('panel')}}/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{asset('panel')}}/plugins/summernote/css/summernote.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{asset('panel')}}/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{asset('panel')}}/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
+
 <style>
     #tableWithSearch{
         direction: rtl;
@@ -22,7 +30,7 @@
                     </div>
                     <div class="modal-body">
                         <p class="small-text">برای دسترسی جدید فرم زیر را پر کنید</p>
-                        <form role="form" method="post" id="form1" action="{{route('permissions.store')}}">
+                        <form role="form" method="post" id="form1" action="{{route('roles.store')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-12">
@@ -39,6 +47,28 @@
                                         <input id="appDescription" type="text" name="description" class="form-control" placeholder="توضیحات دسترسی...">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <h5>
+                                    Multi select
+                                </h5>
+                                <p>Fancy multiselect option box. Customized for the anypreference</p>
+                                <br>
+                                <select id="multi" class="full-width" multiple>
+                                    <option value="Jim">Jim</option>
+                                    <option value="John">John</option>
+                                    <option value="Lucy">Lucy</option>
+                                </select>
+                                <form class="m-t-10" role="form">
+                                    <div class="form-group form-group-default form-group-default-select2">
+                                        <label>Project</label>
+                                        <select class=" full-width" data-init-plugin="select2" multiple>
+                                            <option value="Jim">Jim</option>
+                                            <option value="John">John</option>
+                                            <option value="Lucy">Lucy</option>
+                                        </select>
+                                    </div>
+                                </form>
                             </div>
                         </form>
                     </div>
@@ -168,29 +198,31 @@
                             <th>اسم نقش</th>
                             {{--<th>Places</th>--}}
                             <th>توضیحات</th>
-                            {{--<th>Status</th>--}}
+                            <th>نقش ها</th>
                             <th>تغییرات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($permissions as $permission)
+                        @foreach($roles as $role)
                         <tr>
 
                             <td class="v-align-middle semi-bold">
-                                <p>{{$permission->name}}</p>
+                                <p>{{$role->name}}</p>
                             </td>
                             {{--<td class="v-align-middle"><a href="#" class="btn btn-tag">United States</a><a href="#" class="btn btn-tag">India</a>--}}
                                 {{--<a href="#" class="btn btn-tag">China</a><a href="#" class="btn btn-tag">Africa</a>--}}
                             {{--</td>--}}
                             <td class="v-align-middle">
-                                <p>{{$permission->description}}</p>
+                                <p>{{$role->description}}</p>
                             </td>
-                            {{--<td class="v-align-middle">--}}
-                                {{--<p>Public</p>--}}
-                            {{--</td>--}}
+                            <td class="v-align-middle">@foreach($role->permissions()->get() as $name)
+                                    <a href="#" class="btn btn-tag">{{$name->name}}</a>
+                                @endforeach
+                            {{--<a href="#" class="btn btn-tag">China</a><a href="#" class="btn btn-tag">Africa</a>--}}
+                            </td>
                             <td class="v-align-middle">
-                                <a href="{{route('permissions.edit',$permission->id)}}"  data-toggle="modal" data-target="#editNewAppModal" class="btn btn-primary edit-permission">ویرایش</a>
-                                <form method="post" style="display: inline-block;" action="{{route('permissions.destroy',$permission->id)}}">
+                                <a href="{{route('roles.edit',$role->id)}}"  data-toggle="modal" data-target="#editNewAppModal" class="btn btn-primary edit-role">ویرایش</a>
+                                <form method="post" style="display: inline-block;" action="{{route('roles.destroy',$role->id)}}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger ">حذف</button>
@@ -221,6 +253,23 @@
     <script type="text/javascript" src="{{asset('panel')}}/plugins/datatables-responsive/js/lodash.min.js"></script>
     <!-- END VENDOR JS -->
     <script src="{{asset('panel')}}/js/datatables.js" type="text/javascript"></script>
+
+    <script src="{{asset('panel')}}/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script type="text/javascript" src="{{asset('panel')}}/plugins/jquery-autonumeric/autoNumeric.js"></script>
+    <script type="text/javascript" src="{{asset('panel')}}/plugins/dropzone/dropzone.min.js"></script>
+    <script type="text/javascript" src="{{asset('panel')}}/plugins/bootstrap-tag/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript" src="{{asset('panel')}}/plugins/jquery-inputmask/jquery.inputmask.min.js"></script>
+    <script src="{{asset('panel')}}/plugins/bootstrap-form-wizard/js/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+    <script src="{{asset('panel')}}/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="{{asset('panel')}}/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="{{asset('panel')}}/plugins/summernote/js/summernote.min.js" type="text/javascript"></script>
+    <script src="{{asset('panel')}}/plugins/moment/moment.min.js"></script>
+    <script src="{{asset('panel')}}/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="{{asset('panel')}}/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="{{asset('panel')}}/plugins/bootstrap-typehead/typeahead.bundle.min.js"></script>
+    <script src="{{asset('panel')}}/plugins/bootstrap-typehead/typeahead.jquery.min.js"></script>
+    <script src="{{asset('panel')}}/plugins/handlebars/handlebars-v4.0.5.js"></script>
+    <script src="{{asset('panel')}}/js/form_elements.js" type="text/javascript"></script>
     <script>
         $(function() {
             $.ajaxSetup({
@@ -239,14 +288,14 @@
                 })
             });
 
-            $(document).on('click','.edit-permission',function(e){
+            $(document).on('click','.edit-role',function(e){
                 // e.preventDefault();
                 $.ajax({
                     type: 'GET',
                     url: $(this).attr('href'),
                     success:function(result){
                         // console.log(result);
-                        $("#form2").attr('action','/admin/permissions/'+result.id)
+                        $("#form2").attr('action','/admin/roles/'+result.id)
                         $("#form2 input[name='name']").val(result.name);
                         $("#form2 input[name='description']").val(result.description);
 

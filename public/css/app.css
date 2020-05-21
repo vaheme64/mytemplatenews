@@ -10989,3 +10989,8 @@ th {
   font-family: Vazir !important;
 }
 
+#form1 input,
+#form2 input {
+  text-align: right !important;
+}
+
