@@ -42,9 +42,12 @@ class RoleController extends Controller
         if($request->ajax()) {
             $data = $request->validate([
                 'name' => ['required', 'string', 'max:255', 'unique:roles'],
-                'description' => ['required', 'string', 'max:255']
+                'description' => ['required', 'string', 'max:255'],
+                'permissions'=>['required','array']
             ]);
-            Role::create($data);
+            $role=Role::create($data);
+            $role->permissions()->sync($data['permissions']);
+            
         }
 
         return redirect()->route('roles.index');
@@ -71,7 +74,7 @@ class RoleController extends Controller
     {
         if($request->ajax()){
 
-            return response()->json($role);
+            return response()->json([$role,$role->permissions->pluck('id','name')]);
         }
     }
 

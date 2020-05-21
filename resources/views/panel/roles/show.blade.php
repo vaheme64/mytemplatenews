@@ -8,10 +8,15 @@
     <link href="{{asset('panel')}}/plugins/summernote/css/summernote.css" rel="stylesheet" type="text/css" media="screen">
     <link href="{{asset('panel')}}/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="screen">
     <link href="{{asset('panel')}}/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" media="screen">
+    <link class="main-stylesheet" href="{{asset('panel')}}/pages/css/themes/corporate.css" rel="stylesheet" type="text/css" />
+
 
 <style>
     #tableWithSearch{
         direction: rtl;
+    }
+    .select2-container--open .select2-dropdown--below{
+        z-index:9999;
     }
 </style>
 @endsection
@@ -52,23 +57,23 @@
                                 <h5>
                                     Multi select
                                 </h5>
-                                <p>Fancy multiselect option box. Customized for the anypreference</p>
+                                <!-- <p>Fancy multiselect option box. Customized for the anypreference</p>
                                 <br>
                                 <select id="multi" class="full-width" multiple>
                                     <option value="Jim">Jim</option>
                                     <option value="John">John</option>
                                     <option value="Lucy">Lucy</option>
-                                </select>
-                                <form class="m-t-10" role="form">
+                                </select> -->
+                              
                                     <div class="form-group form-group-default form-group-default-select2">
                                         <label>Project</label>
-                                        <select class=" full-width" data-init-plugin="select2" multiple>
-                                            <option value="Jim">Jim</option>
-                                            <option value="John">John</option>
-                                            <option value="Lucy">Lucy</option>
+                                        <select class=" full-width" name='permissions[]' id='multi' data-init-plugin="select2" multiple>
+                                            @foreach($permissions as $permission)
+                                            <option value="{{$permission->id}}">{{$permission->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                </form>
+                            
                             </div>
                         </form>
                     </div>
@@ -110,6 +115,12 @@
                                     </div>
                                 </div>
                             </div>
+                                    <div class="form-group form-group-default form-group-default-select2">
+                                        <label>Project</label>
+                                        <select class=" full-width" name='permissions[]' id='multi' data-init-plugin="select2" multiple>
+                                           
+                                        </select>
+                                    </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -277,6 +288,8 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+        
+
             $('#add-app').on('click',function (e) {
                 $.ajax({
                     type: "POST",
@@ -295,10 +308,26 @@
                     url: $(this).attr('href'),
                     success:function(result){
                         // console.log(result);
-                        $("#form2").attr('action','/admin/roles/'+result.id)
-                        $("#form2 input[name='name']").val(result.name);
-                        $("#form2 input[name='description']").val(result.description);
-
+                        $("#form2").attr('action','/admin/roles/'+result[0].id)
+                        $("#form2 input[name='name']").val(result[0].name);
+                        $("#form2 input[name='description']").val(result[0].description);
+                       
+                       const role=result[1];
+                       let options=[];
+                        
+                        for( res in role){
+                            // console.log(role[res]);
+                            // console.log(res)
+                            // options +="<option value='"+role[res]+"'>"+res+"</option>";
+                            let ds=role[res];
+                            let b={ds:res};
+                            options.push(b)
+                        }
+                        console.log(options);
+                        // $("#form2 input[name='permissions[]']").append(options);
+                        $('#multi').select2({
+                            data: options
+                        });
                     }
                 });
             });

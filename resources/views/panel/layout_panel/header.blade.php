@@ -20,9 +20,13 @@
     <link href="{{asset('panel')}}/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="{{asset('panel')}}/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="{{asset('panel')}}/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+
+
     <link href="{{asset('panel')}}/plugins/nvd3/nv.d3.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="{{asset('panel')}}/plugins/mapplic/css/mapplic.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('panel')}}/plugins/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+
+
     <link href="{{asset('panel')}}/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="{{asset('panel')}}/pages/css/themes/corporate.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}" >
