@@ -58,6 +58,18 @@
           <span class="icon-thumbnail"><i class="pg-social"></i></span>
         </li>
         <li>
+            <a href="javascript:;"><span class="title">مدیریت کاربران</span>
+              <span class=" arrow"></span></a>
+            <span class="icon-thumbnail"><i class="pg-calender"></i></span>
+            <ul class="sub-menu">
+              <li class="">
+              <a href="{{route('users.index')}}">نمایش</a>
+                <span class="icon-thumbnail">c</span>
+              </li>
+            
+            </ul>
+          </li>
+        <li>
           <a href="javascript:;"><span class="title">سطوح دسترسی</span>
             <span class=" arrow"></span></a>
           <span class="icon-thumbnail"><i class="pg-calender"></i></span>
