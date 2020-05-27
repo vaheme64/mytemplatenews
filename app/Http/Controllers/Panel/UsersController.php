@@ -61,9 +61,11 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Request $request,User $user)
     {
-        //
+        if($request->ajax()){
+            return response()->json([$user,$user->permissions->pluck('id','name'),$user->roles->pluck('id','name')]);
+        }
     }
 
     /**

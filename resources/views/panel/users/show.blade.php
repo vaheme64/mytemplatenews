@@ -25,17 +25,86 @@
     <!-- START PAGE CONTENT -->
     <div class="content ">
         <!-- MODAL STICK UP  -->
-        <div class="modal fade stick-up" id="addNewAppModal" tabindex="-1" role="dialog" aria-labelledby="addNewAppModal" aria-hidden="true">
+        {{--<div class="modal fade stick-up" id="addNewAppModal" tabindex="-1" role="dialog" aria-labelledby="addNewAppModal" aria-hidden="true">--}}
+            {{--<div class="modal-dialog">--}}
+                {{--<div class="modal-content">--}}
+                    {{--<div class="modal-header clearfix ">--}}
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>--}}
+                        {{--</button>--}}
+                        {{--<h4 class="p-b-5">نقش <span class="semi-bold">جدید</span></h4>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-body">--}}
+                        {{--<p class="small-text">برای نقش جدید فرم زیر را پر کنید</p>--}}
+                        {{--<form role="form" method="post" id="form1" action="{{route('register')}}">--}}
+                            {{--@csrf--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-12">--}}
+                                    {{--<div class="form-group form-group-default">--}}
+                                        {{--<label for="appName">نام کاربر</label>--}}
+                                        {{--<input id="appName" type="text" name="name" class="form-control" placeholder="نام کاربر ...">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-12">--}}
+                                    {{--<div class="form-group form-group-default">--}}
+                                        {{--<label for="appEmail">نام کاربر</label>--}}
+                                        {{--<input id="appEmail" type="email" name="email" class="form-control" placeholder="ایمیل ...">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-12">--}}
+                                    {{--<div class="form-group form-group-default">--}}
+                                        {{--<label for="kindUser"></label>--}}
+                                        {{--<select class=" full-width" name='roles[]' id='kindUser' data-init-plugin="select2" >--}}
+
+                                                {{--<option value="1">کابرعادی</option>--}}
+                                                {{--<option value="2">کارمند</option>--}}
+
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-12">--}}
+                                    {{--<div class="form-group form-group-default">--}}
+                                        {{--<label>کلمه عبور</label>--}}
+                                        {{--<input id="appPassword" type="password" name="password" class="form-control" placeholder="کلمه عبور ...">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-12">--}}
+                                    {{--<div class="form-group form-group-default">--}}
+                                        {{--<label>تکرار کلمه عبور</label>--}}
+                                        {{--<input id="appPassword" type="password" name="password-confirm" class="form-control" placeholder="کلمه عبور ...">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-footer">--}}
+                        {{--<button class="btn btn-cons" data-dismiss="modal">بستن</button>--}}
+                        {{--<button id="add-app"  type="submit"  class="btn btn-primary  btn-cons">اضافه کردن</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<!-- /.modal-content -->--}}
+            {{--</div>--}}
+            {{--<!-- /.modal-dialog -->--}}
+        {{--</div>--}}
+        <div class="modal fade stick-up" id="editNewAppModal" tabindex="-1" role="dialog" aria-labelledby="addNewAppModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header clearfix ">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <i class="pg-close fs-14"></i>
                         </button>
-                        <h4 class="p-b-5">نقش <span class="semi-bold">جدید</span></h4>
+                        <h4 class="p-b-5">ویرایش <span class="semi-bold">کاربر</span></h4>
                     </div>
                     <div class="modal-body">
-                        <p class="small-text">برای نقش جدید فرم زیر را پر کنید</p>
-                        <form role="form" method="post" id="form1" action="{{route('register')}}">
+                        <p class="small-text">برای ویرایش کاربر فرم زیر را پر کنید</p>
+                        <form role="form" method="post" id="form2" action="{{route('register')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-12">
@@ -48,7 +117,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
-                                        <label for="appEmail">نام کاربر</label>
+                                        <label for="appEmail">ایمیل</label>
                                         <input id="appEmail" type="email" name="email" class="form-control" placeholder="ایمیل ...">
                                     </div>
                                 </div>
@@ -57,11 +126,33 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label for="kindUser"></label>
-                                        <select class=" full-width" name='roles[]' id='kindUser' data-init-plugin="select2" >
-                                            
-                                                <option value="1">کابرعادی</option>
-                                                <option value="2">کارمند</option>
-                                        
+                                        <select class=" full-width" name='users[]' id='kindUser' data-init-plugin="select2" >
+                                            <option value="0">کابرعادی</option>
+                                            <option value="1">کارمند</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label for="roles"></label>
+                                        <select class=" full-width" name='roles[]' id='roles' data-init-plugin="select2" >
+                                            @foreach($roles as $role)
+                                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label for="permissions"></label>
+                                        <select class=" full-width" name='permissions[]' id='permissions' data-init-plugin="select2" >
+                                            @foreach($permissions as $permission)
+                                                <option value="{{$permission->id}}">{{$permission->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -78,77 +169,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>تکرار کلمه عبور</label>
-                                        <input id="appPassword" type="password" name="password-confirm" class="form-control" placeholder="کلمه عبور ...">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-cons" data-dismiss="modal">بستن</button>
-                        <button id="add-app"  type="submit"  class="btn btn-primary  btn-cons">اضافه کردن</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <div class="modal fade stick-up" id="editNewAppModal" tabindex="-1" role="dialog" aria-labelledby="addNewAppModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header clearfix ">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            <i class="pg-close fs-14"></i>
-                        </button>
-                        <h4 class="p-b-5">ویرایش <span class="semi-bold">کاربر</span></h4>
-                    </div>
-                    <div class="modal-body">
-                        <p class="small-text">برای ویرایش کاربر فرم زیر را پر کنید</p>
-                        <form role="form" method="post" id="form2" action="">
-                            @csrf
-                            @method('PATCH')
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-group-default">
-                                        <label for="appName">نام کاربر</label>
-                                        <input id="appName" type="text" name="name" class="form-control" placeholder="نام کاربر ...">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-group-default">
-                                        <label for="appEmail">نام کاربر</label>
-                                        <input id="appEmail" type="email" name="email" class="form-control" placeholder="ایمیل ...">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-group-default">
-                                        <label for="kindUser"></label>
-                                        <select class=" full-width" name='roles[]' id='kindUser' data-init-plugin="select2" >
-                                            
-                                                <option value="1">کابرعادی</option>
-                                                <option value="2">کارمند</option>
-                                        
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-group-default">
-                                        <label>کلمه عبور</label>
-                                        <input id="appPassword" type="password" name="password" class="form-control" placeholder="کلمه عبور ...">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-group-default">
-                                        <label>کلمه عبور</label>
-                                        <input id="appPasswordConfirm" type="password" name="password-confirm" class="form-control" placeholder="تکرار کلمه عبور ...">
+                                        <input id="appConfirmPassword" type="password" name="password-confirm" class="form-control" placeholder="کلمه عبور ...">
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +212,8 @@
                                     </div>
                                 </div>
                                 <div class="card-block">
-                                    <h3>درست کردن سطح دسترسی</h3>
+                                    <h3>مدیریت کاربران</h3>
+                                    {{--TODO: GOOD DESCRIPTION--}}
                                     <p>با تعریف نقش ها در این صفحه به هر فرد متناسب بانقشی که برای آن تعریف می کنید اجازه دسترسی بدهید. </p>
                                     {{--<p class="small hint-text m-t-5">VIA senior product manage--}}
                                     {{--<br> for UI/UX at REVOX</p>--}}
@@ -212,25 +234,13 @@
 
             <div class="card card-transparent text-left">
                 <div class="card-header ">
-                    <div class="card-title"><h4 class="bold">لیست نقش ها</h4>
+                    <div class="card-title"><h4 class="bold">لیست کاربرها</h4>
                     </div>
                     <div class="pull-right">
                         <div class="col-xs-12">
                             <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
                         </div>
                     </div>
-                    <div class="pull-right">
-                        <div class="col-xs-12">
-                            <button id="show-modal" class="btn btn-primary btn-cons"> اضافه کردن نقش<i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    {{--<div class="pull-right">--}}
-                    {{--<div class="col-xs-12">--}}
-                    {{--<button id="show-modal-roles" class="btn btn-primary btn-cons"> اضافه کردن نقش<i class="fa fa-plus"></i>--}}
-                    {{--</button>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
                     <div class="clearfix"></div>
                 </div>
                 <div class="card-block text-right">
@@ -263,8 +273,8 @@
                                     {{--<a href="#" class="btn btn-tag">China</a><a href="#" class="btn btn-tag">Africa</a>--}}
                                 </td>
                                 <td class="v-align-middle">
-                                    <a href="{{route('roles.edit',$user->id)}}"  data-toggle="modal" data-target="#editNewAppModal" class="btn btn-primary edit-role">ویرایش</a>
-                                    <form method="post" style="display: inline-block;" action="{{route('roles.destroy',$user->id)}}">
+                                    <a href="{{route('users.edit',$user->id)}}"  data-toggle="modal" data-target="#editNewAppModal" class="btn btn-primary edit-user">ویرایش</a>
+                                    <form method="post" style="display: inline-block;" action="{{route('users.destroy',$user->id)}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger ">حذف</button>
@@ -334,7 +344,7 @@
             });
             // allPermission={!! json_encode($roles) !!};
 
-            $(document).on('click','.edit-role',function(e){
+            $(document).on('click','.edit-user',function(e){
                 // e.preventDefault();
                 let stringOptions="";
                 $.ajax({
@@ -342,9 +352,16 @@
                     url: $(this).attr('href'),
                     success:function(result){
                         // console.log(result);
-                        $("#form2").attr('action','/admin/roles/'+result[0].id)
+                        $("#form2").attr('action','/admin/users/'+result[0].id)
                         $("#form2 input[name='name']").val(result[0].name);
-                        $("#form2 input[name='description']").val(result[0].description);
+                        $("#form2 input[name='email']").val(result[0].email);
+                        console.log(result[0].is_staff);
+                        if(result[0].is_staff>=1){
+                            $("#form2 select[name='users[]']").val(1).change();
+                        }else{
+                            $("#form2 select[name='users[]']").val(0).change();
+                        }
+
 
                         allPermission=$("#form2 select[name='permissions[]']").children();
                         const role=result[1];

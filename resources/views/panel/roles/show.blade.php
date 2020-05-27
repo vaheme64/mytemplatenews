@@ -18,6 +18,15 @@
         .select2-container--open .select2-dropdown--below{
             z-index:9999;
         }
+        /*select option {*/
+            /*margin: 40px;*/
+            /*background: rgba(3, 31, 169, 0.3);*/
+            /*color: #fff;*/
+            /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);*/
+        /*}*/
+        /*#form2 option:checked { background-color: red !important; }*/
+        /*#form2 .selected:checked { color: red !important; }*/
+
     </style>
 @endsection
 @section('content')
@@ -119,8 +128,8 @@
                                 <label>دسترسی ها</label>
                                 <select class="full-width" name='permissions[]' multiple>
                                     @foreach($permissions as $permission)
-                                    <option value="{{$permission->id}}">{{$permission->name}}</option>
-                                @endforeach
+                                        <option value="{{$permission->id}}">{{$permission->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </form>
@@ -307,6 +316,7 @@
             $(document).on('click','.edit-role',function(e){
                 // e.preventDefault();
                 let stringOptions="";
+
                 $.ajax({
                     type: 'GET',
                     url: $(this).attr('href'),
@@ -321,13 +331,13 @@
                         let options=[];
                         let selectedVar=false;
                         // for( res in role){
-                            // console.log(role[res]);
-                            // console.log(res)
-                            // let id=role[res];
-                            // if(res===allPermission[id]){
-                            //
-                            // }
-                            // stringOptions +="<option value='"+role[res]+"'>"+res+"</option>";
+                        // console.log(role[res]);
+                        // console.log(res)
+                        // let id=role[res];
+                        // if(res===allPermission[id]){
+                        //
+                        // }
+                        // stringOptions +="<option value='"+role[res]+"'>"+res+"</option>";
 
 
 
@@ -339,21 +349,33 @@
                         // console.log(options);
                         // $("#form2 select[name='permissions[]']").empty().append(stringOptions);
                         // $(".dropdown-wrapper").append(stringOptions);
-
                         allPermission.each(function(index,value){
                             // console.log(index+"++++"+value.value);
                             for( res in role){
                                 let id=role[res];
                                 let currentOption=value;
-                                console.log(value.value);
-                                if(value.value==id){
-                                    $(currentOption).attr('selected','selected');
-                                    console.log($(currentOption))
-                                }
-                            stringOptions +=currentOption;
+                                // console.log(value.value);
+                                $(currentOption).removeAttr('selected');
+                                $(currentOption).removeClass('selected');
                             }
-                            })
-                            // console.log(stringOptions);
+                        });
+                        allPermission.each(function(index,value){
+                            // console.log(index+"++++"+value.value);
+                            for( res in role){
+                                let id=role[res];
+                                let currentOption=value;
+                                // console.log(value.value);
+                                if(value.value==id ){
+                                    $(currentOption).attr('selected','selected');
+                                    // $(currentOption).css({'background-color':'red'});
+                                    // console.log($(currentOption))
+                                }
+                                stringOptions +=currentOption;
+                            }
+                        });
+                        // $("#form2 select[name='permissions[]']").empty();
+                        // $("#form2 select[name='permissions[]']").append(stringOptions);
+                        console.log(stringOptions);
                     }
                 });
             });
