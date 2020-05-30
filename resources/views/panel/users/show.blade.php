@@ -126,7 +126,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label for="kindUser"></label>
-                                        <select class=" full-width" name='users[]' id='kindUser' data-init-plugin="select2" >
+                                        <select class=" full-width" name='users' id='kindUser' data-init-plugin="select2" >
                                             <option value="0">کابرعادی</option>
                                             <option value="1">کارمند</option>
                                         </select>
