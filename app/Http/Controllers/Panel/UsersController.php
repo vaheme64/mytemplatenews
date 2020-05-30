@@ -77,7 +77,19 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        if($request->ajax()){
+            $data=$request->validate([
+                'name' => ['required', 'string', 'max:255', Rule::unique('roles')->ignore($role->id)],
+                'description' => ['required', 'string', 'max:255'],
+                'permissions'=>['required','array']
+            ]);
+            $role->update($data);
+            $role->permissions()->sync($data['permissions']);
+            // return json_encode(array('statusCode'=>200));
+            return response()->json(Role::all());
+
+
+        }
     }
 
     /**

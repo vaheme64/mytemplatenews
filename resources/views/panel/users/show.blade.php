@@ -137,7 +137,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label for="roles"></label>
-                                        <select class=" full-width" name='roles[]' id='roles' data-init-plugin="select2" >
+                                        <select class=" full-width" name='roles[]' id='roles' data-init-plugin="select2" multiple>
                                             @foreach($roles as $role)
                                                 <option value="{{$role->id}}">{{$role->name}}</option>
                                             @endforeach
@@ -145,7 +145,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label for="permissions"></label>
@@ -156,7 +156,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
